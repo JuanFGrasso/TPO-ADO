@@ -5,7 +5,7 @@ import java.util.*;
 public class Habitacion {
 	
 	private IStrategyTipoHabitacion tipoHabitacion;
-    private DisponibilidadHabitacion disponibilidad;
+	private DisponibilidadHabitacion disponibilidad;
     
 
     public Habitacion() {
