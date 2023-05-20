@@ -1,47 +1,31 @@
-
+package negocio;
+import java.io.Serializable;
 import java.util.*;
 
-/**
- * 
- */
 public class Habitacion {
+	
+	private IStrategyTipoHabitacion tipoHabitacion;
+    private DisponibilidadHabitacion disponibilidad;
+    
 
-    /**
-     * Default constructor
-     */
     public Habitacion() {
     }
+    
+    public Habitacion(IStrategyTipoHabitacion tipoHabitacion, DisponibilidadHabitacion disponibilidad) {
+    	this.disponibilidad = disponibilidad;
+    	this.tipoHabitacion = tipoHabitacion;
+    }
 
-    /**
-     * 
-     */
-    private IStrategyTipoHabitacion tipoHabitacion;
-
-    /**
-     * 
-     */
-    private DisponibilidadHabitacion disponibilidad;
-
-    /**
-     * @return
-     */
+    
     public DisponibilidadHabitacion obtenerDisponibilidad() {
         // TODO implement here
         return null;
     }
 
-    /**
-     * @param estrategia 
-     * @return
-     */
     public void setStrategy(IStrategyTipoHabitacion estrategia) {
         // TODO implement here
-        return null;
     }
 
-    /**
-     * @return
-     */
     public double obtenerPrecio() {
         // TODO implement here
         return 0.0d;
