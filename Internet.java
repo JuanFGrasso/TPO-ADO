@@ -7,6 +7,7 @@ public class Internet extends Extra {
     private String nombre;
 
     public Internet() {
+    	
     }
 
 }

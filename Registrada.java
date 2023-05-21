@@ -28,5 +28,9 @@ public class Registrada extends EstadoReserva {
     public abstract void cancelar(Reserva reserva) {
     	
     }
+    
+    public abstract void concretar(Reserva reserva) {
+    	
+    }
 
 }

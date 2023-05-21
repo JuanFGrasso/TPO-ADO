@@ -7,6 +7,7 @@ public class MiniBar extends Extra {
     private String nombre;
 
     public MiniBar() {
+    	
     }
 
 }
