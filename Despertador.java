@@ -1,25 +1,12 @@
 
 import java.util.*;
 
-/**
- * 
- */
 public class Despertador extends Extra {
+	
+	private double precio;
+    private String nombre;
 
-    /**
-     * Default constructor
-     */
     public Despertador() {
     }
-
-    /**
-     * 
-     */
-    private double precio;
-
-    /**
-     * 
-     */
-    private String nombre;
 
 }

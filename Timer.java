@@ -1,20 +1,11 @@
 
 import java.util.*;
 
-/**
- * 
- */
 public class Timer {
+	
+	private double limite = 24;
 
-    /**
-     * Default constructor
-     */
     public Timer() {
     }
-
-    /**
-     * 
-     */
-    private double limite = 24;
 
 }

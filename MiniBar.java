@@ -1,25 +1,12 @@
 
 import java.util.*;
 
-/**
- * 
- */
 public class MiniBar extends Extra {
+	
+	private double precio;
+    private String nombre;
 
-    /**
-     * Default constructor
-     */
     public MiniBar() {
     }
-
-    /**
-     * 
-     */
-    private double precio;
-
-    /**
-     * 
-     */
-    private String nombre;
 
 }

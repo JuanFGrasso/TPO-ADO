@@ -1,10 +1,8 @@
-package negocio;
+
 import java.time.LocalDate;
 import java.util.*;
 import java.io.Serializable;
-/**
- * 
- */
+
 public class Reserva implements Serializable{
 
     private int cantidadPersonas;
