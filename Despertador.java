@@ -2,11 +2,9 @@
 import java.util.*;
 
 public class Despertador extends Extra {
-	
-	private double precio;
-    private String nombre;
 
-    public Despertador() {
+    public Despertador(double precio, String nombre) {
+    	super(precio, nombre);
     }
 
 }

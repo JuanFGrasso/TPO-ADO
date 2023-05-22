@@ -2,11 +2,12 @@
 import java.util.*;
 
 public class WhatsApp {
+	
+	private IAdapterWhatsApp adapter;
 
-    public WhatsApp() {
+    public WhatsApp(IAdapterWhatsApp adapter) {
+    	this.adapter = adapter;
     }
-
-    private IAdapterWhatsApp adapter;
 
     public void enviarFactura(Factura factura, Cliente cliente) {
         // TODO implement here

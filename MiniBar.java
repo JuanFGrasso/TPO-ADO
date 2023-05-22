@@ -2,12 +2,9 @@
 import java.util.*;
 
 public class MiniBar extends Extra {
-	
-	private double precio;
-    private String nombre;
 
-    public MiniBar() {
-    	
+    public MiniBar(double precio, String nombre) {
+    	super(precio, nombre);
     }
 
 }

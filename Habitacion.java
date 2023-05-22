@@ -7,10 +7,6 @@ public class Habitacion {
 	private IStrategyTipoHabitacion tipoHabitacion;
 	private DisponibilidadHabitacion disponibilidad;
     
-
-    public Habitacion() {
-    }
-    
     public Habitacion(IStrategyTipoHabitacion tipoHabitacion, DisponibilidadHabitacion disponibilidad) {
     	this.disponibilidad = disponibilidad;
     	this.tipoHabitacion = tipoHabitacion;
@@ -18,12 +14,11 @@ public class Habitacion {
 
     
     public DisponibilidadHabitacion obtenerDisponibilidad() {
-        // TODO implement here
-        return null;
+        return disponibilidad;
     }
 
     public void setStrategy(IStrategyTipoHabitacion estrategia) {
-        // TODO implement here
+        this.tipoHabitacion = estrategia;
     }
 
     public double obtenerPrecio() {

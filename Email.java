@@ -6,7 +6,8 @@ public class Email {
 	private IAdapterEmail adapter;
 
  
-    public Email() {
+    public Email(IAdapterEmail adapter) {
+    	this.adapter = adapter;
     }
 
     public void enviarFactura(Factura factura, Cliente cliente) {

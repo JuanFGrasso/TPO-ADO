@@ -21,16 +21,4 @@ public class Pagada extends EstadoReserva {
         return null;
     }
 
-    public abstract void reservar(Reserva reserva) {
-    	
-    }
-
-    public abstract void cancelar(Reserva reserva) {
-    	
-    }
-    
-    public abstract void concretar(Reserva reserva) {
-    	
-    }
-
 }

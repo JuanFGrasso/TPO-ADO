@@ -3,7 +3,8 @@ import java.util.*;
 
 public class PendientePago extends EstadoPago {
 
-    public PendientePago() {
+    public PendientePago(Timer timer) {
+    	super(timer);
     }
 
     public void pagar(Reserva reserva) {
@@ -14,14 +15,6 @@ public class PendientePago extends EstadoPago {
     public void cancelar(Reserva reserva, Timer timer) {
         // TODO implement here
         return null;
-    }
-
-    public abstract void pagar(Reserva reserva) {
-    	
-    }
-
-    public abstract void cancelar(Reserva reserva, Timer timer) {
-    	
     }
 
 }

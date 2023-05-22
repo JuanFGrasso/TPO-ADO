@@ -7,12 +7,14 @@ public class Contacto {
     private String email;
     private IStrategyMetodoContacto metodo;
 
-    public Contacto() {
+    public Contacto(String telefono, String email, IStrategyMetodoContacto metodo) {
+    	this.telefono = telefono;
+    	this.email = email;
+    	this.metodo = metodo;
     }
     
     public void setStrategy(IStrategyMetodoContacto estrategia) {
-        // TODO implement here
-        return null;
+        this.metodo = estrategia;
     }
 
 }

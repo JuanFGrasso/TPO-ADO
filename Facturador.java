@@ -6,7 +6,9 @@ public class Facturador {
 	private MedioDePago medioDePago;
 	private IAdapterMercadoPago adapter;
 
-    public Facturador() {
+    public Facturador(MedioDePago medioDePago, IAdapterMercadoPago adapter) {
+    	this.medioDePago = medioDePago;
+    	this.adapter = adapter;
     }
 
     public void abonarReserva(Reserva reserva) {

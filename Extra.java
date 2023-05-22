@@ -2,8 +2,13 @@
 import java.util.*;
 
 public class Extra {
+	
+	private double precio;
+    private String nombre;
 
-    public Extra() {
+    public Extra(double precio, String nombre) {
+    	this.precio = precio;
+    	this.nombre = nombre;
     }
 
     public void calcularValorExtras() {

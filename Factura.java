@@ -7,8 +7,6 @@ public class Factura {
     private Cliente cliente;
     private Reserva reserva;
 
-    public Factura() {
-    }
     public Factura(Cliente cliente, Reserva reserva) {
     	this.cliente = cliente;
     	this.reserva = reserva;

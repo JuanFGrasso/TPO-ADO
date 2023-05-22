@@ -3,7 +3,7 @@ import java.time.LocalDate;
 import java.util.*;
 import java.io.Serializable;
 
-public class Reserva implements Serializable{
+public class Reserva {
 
     private int cantidadPersonas;
     private Habitacion habitacion;
@@ -17,8 +17,6 @@ public class Reserva implements Serializable{
     private EstadoReserva estadoReserva;
     private EstadoPago estadoPago;
     
-    public Reserva() {
-    }
     public Reserva(int cantidadPersonas , Habitacion habitacion, Cliente cliente, List<Extra> serviciosExtras, LocalDate fechaCheckin, LocalDate fechaCheckout, double precioBase, double montoFinal, PoliticasDePrecio politicasPrecio, EstadoReserva estadoReserva,EstadoPago estadoPago){
         this.cantidadPersonas = cantidadPersonas;
         this.habitacion = habitacion;
