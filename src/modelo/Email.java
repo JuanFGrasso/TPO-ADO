@@ -2,9 +2,9 @@ package modelo;
 
 public class Email {
 	
-	private IAdapterEmail adapter;
+	private AdaptadorEmail adapter;
 
-    public Email(IAdapterEmail adapter) {
+    public Email(AdaptadorEmail adapter) {
     	this.adapter = adapter;
     }
 
@@ -12,11 +12,11 @@ public class Email {
         // TODO implement here
     }
 
-	public IAdapterEmail getAdapter() {
+	public AdaptadorEmail getAdapter() {
 		return adapter;
 	}
 
-	public void setAdapter(IAdapterEmail adapter) {
+	public void setAdapter(AdaptadorEmail adapter) {
 		this.adapter = adapter;
 	}
 

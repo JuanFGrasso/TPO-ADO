@@ -1,8 +1,11 @@
 package modelo;
 
 public abstract class EstadoReserva {
+	
+	Reserva reserva;
 
-    public EstadoReserva() {
+    public EstadoReserva(Reserva reserva) {
+    	this.reserva = reserva;
     }
 
     public abstract void reservar(Reserva reserva);

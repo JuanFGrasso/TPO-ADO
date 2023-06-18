@@ -2,9 +2,9 @@ package modelo;
 
 public class SMS {
 	
-	private IAdapterSMS adapter;
+	private AdaptadorSMS adapter;
 
-    public SMS(IAdapterSMS adapter) {
+    public SMS(AdaptadorSMS adapter) {
     	this.adapter = adapter;
     }
   
@@ -12,11 +12,11 @@ public class SMS {
         // TODO implement here
     }
 
-	public IAdapterSMS getAdapter() {
+	public AdaptadorSMS getAdapter() {
 		return adapter;
 	}
 
-	public void setAdapter(IAdapterSMS adapter) {
+	public void setAdapter(AdaptadorSMS adapter) {
 		this.adapter = adapter;
 	}
     

@@ -2,8 +2,8 @@ package modelo;
 
 public class Internet extends Extra {
 
-    public Internet(double precio, String nombre) {
-    	super(precio, nombre);	
+    public Internet(double precio) {
+    	super(precio);	
     }
     
 }

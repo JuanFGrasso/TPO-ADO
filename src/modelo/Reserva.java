@@ -4,28 +4,23 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class Reserva {
-
-    private int cantidadPersonas;
+	
     private Habitacion habitacion;
     private Cliente cliente;
     private List<Extra> serviciosExtras;
     private LocalDate fechaCheckin;
     private LocalDate fechaCheckout;
-    private double precioBase;
     private double montoFinal;
-    private PoliticasDePrecio politicasPrecio;
+    private IStrategyPoliticas politicasPrecio;
     private EstadoReserva estadoReserva;
     private EstadoPago estadoPago;
     
-    public Reserva(int cantidadPersonas , Habitacion habitacion, Cliente cliente, List<Extra> serviciosExtras, LocalDate fechaCheckin, LocalDate fechaCheckout, double precioBase, double montoFinal, PoliticasDePrecio politicasPrecio, EstadoReserva estadoReserva,EstadoPago estadoPago){
-        this.cantidadPersonas = cantidadPersonas;
+    public Reserva(int cantidadPersonas , Habitacion habitacion, Cliente cliente, List<Extra> serviciosExtras, LocalDate fechaCheckin, LocalDate fechaCheckout, IStrategyPoliticas politicasPrecio, EstadoReserva estadoReserva,EstadoPago estadoPago){
         this.habitacion = habitacion;
         this.cliente = cliente;
         this.serviciosExtras = serviciosExtras;
         this.fechaCheckin = fechaCheckin;
         this.fechaCheckout = fechaCheckout;
-        this.precioBase = precioBase;
-        this.montoFinal = montoFinal;
         this.politicasPrecio = politicasPrecio;
         this.estadoReserva = estadoReserva;
         this.estadoPago = estadoPago;
@@ -38,14 +33,6 @@ public class Reserva {
     public double obtenerPrecioFinal() {
         return 0;
     }
-
-	public int getCantidadPersonas() {
-		return cantidadPersonas;
-	}
-
-	public void setCantidadPersonas(int cantidadPersonas) {
-		this.cantidadPersonas = cantidadPersonas;
-	}
 
 	public Habitacion getHabitacion() {
 		return habitacion;
@@ -87,14 +74,6 @@ public class Reserva {
 		this.fechaCheckout = fechaCheckout;
 	}
 
-	public double getPrecioBase() {
-		return precioBase;
-	}
-
-	public void setPrecioBase(double precioBase) {
-		this.precioBase = precioBase;
-	}
-
 	public double getMontoFinal() {
 		return montoFinal;
 	}
@@ -103,11 +82,11 @@ public class Reserva {
 		this.montoFinal = montoFinal;
 	}
 
-	public PoliticasDePrecio getPoliticasPrecio() {
+	public IStrategyPoliticas getPoliticasPrecio() {
 		return politicasPrecio;
 	}
 
-	public void setPoliticasPrecio(PoliticasDePrecio politicasPrecio) {
+	public void setPoliticasPrecio(IStrategyPoliticas politicasPrecio) {
 		this.politicasPrecio = politicasPrecio;
 	}
 

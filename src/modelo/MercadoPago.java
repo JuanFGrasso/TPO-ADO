@@ -2,7 +2,7 @@ package modelo;
 
 public class MercadoPago {
 	
-	private IAdapterMercadoPago adapter;
+	private AdaptadorMercadoPago adapter;
 
     public MercadoPago() {
     }
@@ -11,11 +11,11 @@ public class MercadoPago {
         // TODO implement here
     }
 
-	public IAdapterMercadoPago getAdapter() {
+	public AdaptadorMercadoPago getAdapter() {
 		return adapter;
 	}
 
-	public void setAdapter(IAdapterMercadoPago adapter) {
+	public void setAdapter(AdaptadorMercadoPago adapter) {
 		this.adapter = adapter;
 	}
 

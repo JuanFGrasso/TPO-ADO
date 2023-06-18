@@ -2,9 +2,9 @@ package modelo;
 
 public class WhatsApp {
 	
-	private IAdapterWhatsApp adapter;
+	private AdaptadorWhatsApp adapter;
 
-    public WhatsApp(IAdapterWhatsApp adapter) {
+    public WhatsApp(AdaptadorWhatsApp adapter) {
     	this.adapter = adapter;
     }
 
@@ -12,11 +12,11 @@ public class WhatsApp {
         // TODO implement here
     }
 
-	public IAdapterWhatsApp getAdapter() {
+	public AdaptadorWhatsApp getAdapter() {
 		return adapter;
 	}
 
-	public void setAdapter(IAdapterWhatsApp adapter) {
+	public void setAdapter(AdaptadorWhatsApp adapter) {
 		this.adapter = adapter;
 	}  
 

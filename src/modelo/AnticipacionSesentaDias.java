@@ -1,6 +1,6 @@
 package modelo;
 
-public class AnticipacionSesentaDias extends PoliticasDePrecio {
+public class AnticipacionSesentaDias implements IStrategyPoliticas {
 
     public AnticipacionSesentaDias() {
     }

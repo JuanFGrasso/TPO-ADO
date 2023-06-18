@@ -1,27 +1,16 @@
 package modelo;
 
-public class Habitacion {
+public abstract class Habitacion {
 	
-	private IStrategyTipoHabitacion tipoHabitacion;
 	private DisponibilidadHabitacion disponibilidad;
+	private int capacidad;
+	private double precioDiario;
     
-    public Habitacion(IStrategyTipoHabitacion tipoHabitacion, DisponibilidadHabitacion disponibilidad) {
+    public Habitacion(DisponibilidadHabitacion disponibilidad, int capacidad, double precioDiario) {
     	this.disponibilidad = disponibilidad;
-    	this.tipoHabitacion = tipoHabitacion;
+    	this.capacidad = capacidad;
+    	this.precioDiario = precioDiario;
     }
-
-    public double obtenerPrecio() {
-        // TODO implement here
-        return 0.0d;
-    }
-
-	public IStrategyTipoHabitacion getTipoHabitacion() {
-		return tipoHabitacion;
-	}
-
-	public void setTipoHabitacion(IStrategyTipoHabitacion tipoHabitacion) {
-		this.tipoHabitacion = tipoHabitacion;
-	}
 
 	public DisponibilidadHabitacion getDisponibilidad() {
 		return disponibilidad;
@@ -29,6 +18,22 @@ public class Habitacion {
 
 	public void setDisponibilidad(DisponibilidadHabitacion disponibilidad) {
 		this.disponibilidad = disponibilidad;
+	}
+
+	public int getCapacidad() {
+		return capacidad;
+	}
+
+	public void setCapacidad(int capacidad) {
+		this.capacidad = capacidad;
+	}
+
+	public double getPrecioDiario() {
+		return precioDiario;
+	}
+
+	public void setPrecioDiario(double precioDiario) {
+		this.precioDiario = precioDiario;
 	}
 
 }

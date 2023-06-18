@@ -1,14 +1,9 @@
 package modelo;
 
-public class Suite extends Habitacion implements IStrategyTipoHabitacion {
+public class Suite extends Habitacion {
 
-    public Suite(IStrategyTipoHabitacion tipoHabitacion, DisponibilidadHabitacion disponibilidad) {
-    	super(tipoHabitacion, disponibilidad);
-    }
-
-    public double obtenerPrecio() {
-        // TODO implement here
-        return 0.0d;
+    public Suite(DisponibilidadHabitacion disponibilidad, int capacidad, double precioDiario) {
+    	super(disponibilidad, capacidad, precioDiario);
     }
 
 }

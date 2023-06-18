@@ -2,19 +2,19 @@ package modelo;
 
 public class Registrada extends EstadoReserva {
 
-    public Registrada() {
+    public Registrada(Reserva reserva) {
+    	super(reserva);
     }
-
+    
     public void reservar(Reserva reserva) {
-        // TODO implement here
     }
 
     public void cancelar(Reserva reserva) {
-        // TODO implement here
+        reserva.setEstadoReserva(new Cancelada(reserva));
     }
 
     public void concretar(Reserva reserva) {
-        // TODO implement here
+        reserva.setEstadoReserva(new Pagada(reserva));
     }
 
 }

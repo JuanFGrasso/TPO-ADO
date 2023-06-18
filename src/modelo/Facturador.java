@@ -3,9 +3,9 @@ package modelo;
 public class Facturador {
 	
 	private MedioDePago medioDePago;
-	private IAdapterMercadoPago adapter;
+	private AdaptadorMercadoPago adapter;
 
-    public Facturador(MedioDePago medioDePago, IAdapterMercadoPago adapter) {
+    public Facturador(MedioDePago medioDePago, AdaptadorMercadoPago adapter) {
     	this.medioDePago = medioDePago;
     	this.adapter = adapter;
     }
@@ -27,11 +27,11 @@ public class Facturador {
 		this.medioDePago = medioDePago;
 	}
 
-	public IAdapterMercadoPago getAdapter() {
+	public AdaptadorMercadoPago getAdapter() {
 		return adapter;
 	}
 
-	public void setAdapter(IAdapterMercadoPago adapter) {
+	public void setAdapter(AdaptadorMercadoPago adapter) {
 		this.adapter = adapter;
 	}
 
