@@ -1,6 +1,6 @@
 package modelo;
 
-public class SMS {
+public class SMS implements IStrategyMetodoContacto{
 	
 	private AdaptadorSMS adapter;
 

@@ -1,13 +1,13 @@
 package modelo;
 
-public class AnticipacionQuinceDias implements IStrategyPoliticas {
-
-    public AnticipacionQuinceDias() {
-    }
+public class AnticipacionQuinceDias extends IStrategyPoliticas {
+	
+	public AnticipacionQuinceDias() {
+		this.descuento = 0.15;
+	}
 
     public double aplicarPoliticas(Reserva reserva) {
-        // TODO implement here
-        return 0.0d;
+    	return 0;
     }
 
 }

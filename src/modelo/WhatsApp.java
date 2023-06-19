@@ -1,6 +1,6 @@
 package modelo;
 
-public class WhatsApp {
+public class WhatsApp implements IStrategyMetodoContacto{
 	
 	private AdaptadorWhatsApp adapter;
 

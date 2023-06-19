@@ -1,5 +1,13 @@
 package modelo;
 
-public class AdaptadorSMS {
+public class AdaptadorSMS implements Twilio{
+
+	public void enviarSMS(Object mensaje) {
+		
+	}
+
+	public void enviarWhatsApp(Object mensaje) {
+		
+	}
 
 }

@@ -1,6 +1,6 @@
 package modelo;
 
-public class Email {
+public class Email implements IStrategyMetodoContacto{
 	
 	private AdaptadorEmail adapter;
 

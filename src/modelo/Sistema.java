@@ -1,7 +1,6 @@
 package modelo;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Sistema {
 	
@@ -25,15 +24,15 @@ public class Sistema {
 		return instancia;
 	}
 	
-	public List<Cliente> getClientes(){
+	public ArrayList<Cliente> getClientes(){
 		return clientes;
 	}
 	
-	public List<Habitacion> getHabitaciones(){
+	public ArrayList<Habitacion> getHabitaciones(){
 		return habitaciones;
 	}
 	
-	public List<Reserva> getReservas(){
+	public ArrayList<Reserva> getReservas(){
 		return reservas;
 	}
 	
@@ -78,6 +77,15 @@ public class Sistema {
 	
 	public Habitacion getHabitacionXNumero(int numero) {
 		for (Habitacion lista: habitaciones) {
+			if (lista.getNumero() == numero) {
+				return lista;
+			}
+		}
+		return null;
+	}
+	
+	public Reserva getReservaXNumero(int numero) {
+		for (Reserva lista: reservas) {
 			if (lista.getNumero() == numero) {
 				return lista;
 			}

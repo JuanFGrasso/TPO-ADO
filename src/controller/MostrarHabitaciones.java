@@ -1,5 +1,6 @@
 package controller;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import modelo.DisponibilidadHabitacion;
@@ -13,7 +14,7 @@ public class MostrarHabitaciones {
 	
 	Sistema sistema = Sistema.getInstance();
 	
-	public ArrayList<Habitacion> mostrarHabitacionesXFiltros(DisponibilidadHabitacion disponibilidad, int capacidad, TipoHabitacion tipo){
+	public ArrayList<Habitacion> mostrarHabitacionesXFiltros(DisponibilidadHabitacion disponibilidad, int capacidad, TipoHabitacion tipo, LocalDate fecha){
 		ArrayList<Habitacion> habitaciones = (ArrayList<Habitacion>) sistema.getHabitaciones();
 		ArrayList<Habitacion> clone = new ArrayList<Habitacion>();
 		
@@ -22,7 +23,7 @@ public class MostrarHabitaciones {
 		}
 		
 		if (disponibilidad != null) {
-			clone.removeIf(t -> t.getDisponibilidad() != disponibilidad);
+			clone.removeIf(t -> t.getDisponibilidadXDia(fecha) != disponibilidad.toString());
 		}
 		
 		if (capacidad != -1 ) {

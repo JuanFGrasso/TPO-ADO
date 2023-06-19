@@ -1,12 +1,10 @@
 package modelo;
 
-public class Timer {
+import java.time.LocalDate;
+
+public abstract class Timer {
 	
 	private double limite = 24;
-
-    public Timer(double limite) {
-    	this.limite = limite;
-    }
 
 	public double getLimite() {
 		return limite;
@@ -15,5 +13,14 @@ public class Timer {
 	public void setLimite(double limite) {
 		this.limite = limite;
 	}
-
+	
+	public void validarTiempo(Reserva reserva, LocalDate fechaHoy) {
+		if (reserva.getEstadoReserva() instanceof Reservado) {
+			if (reserva.getFechaCompra().isBefore(fechaHoy)) {
+				reserva.getEstadoReserva().cancelar();
+			}
+		}
+		
+	}
+	
 }

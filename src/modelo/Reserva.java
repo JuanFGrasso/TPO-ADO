@@ -1,37 +1,31 @@
 package modelo;
 
 import java.time.LocalDate;
-import java.util.*;
 
 public class Reserva {
 	
+	private static int contador = 0;
+	private int numero;
     private Habitacion habitacion;
     private Cliente cliente;
-    private List<Extra> serviciosExtras;
+    private LocalDate fechaCompra;
     private LocalDate fechaCheckin;
     private LocalDate fechaCheckout;
-    private double montoFinal;
     private IStrategyPoliticas politicasPrecio;
     private EstadoReserva estadoReserva;
-    private EstadoPago estadoPago;
+    private double montoBase;
+    private double montoFinal;
     
-    public Reserva(int cantidadPersonas , Habitacion habitacion, Cliente cliente, List<Extra> serviciosExtras, LocalDate fechaCheckin, LocalDate fechaCheckout, IStrategyPoliticas politicasPrecio, EstadoReserva estadoReserva,EstadoPago estadoPago){
+    public Reserva(Habitacion habitacion, Cliente cliente,LocalDate fechaCompra, LocalDate fechaCheckin, LocalDate fechaCheckout){
         this.habitacion = habitacion;
+        habitacion.setDisponibilidadXRango(fechaCheckin, fechaCheckout, DisponibilidadHabitacion.Reservada);
         this.cliente = cliente;
-        this.serviciosExtras = serviciosExtras;
+        this.fechaCompra = fechaCompra;
         this.fechaCheckin = fechaCheckin;
         this.fechaCheckout = fechaCheckout;
-        this.politicasPrecio = politicasPrecio;
-        this.estadoReserva = estadoReserva;
-        this.estadoPago = estadoPago;
-    }
-
-    public void calcularTotalReserva() {
-    	//TODO 
-	}
-
-    public double obtenerPrecioFinal() {
-        return 0;
+        this.estadoReserva = new Reservado(this);
+        this.numero = contador;
+        contador++;
     }
 
 	public Habitacion getHabitacion() {
@@ -49,13 +43,13 @@ public class Reserva {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-
-	public List<Extra> getServiciosExtras() {
-		return serviciosExtras;
+	
+	public LocalDate getFechaCompra() {
+		return fechaCompra;
 	}
 
-	public void setServiciosExtras(List<Extra> serviciosExtras) {
-		this.serviciosExtras = serviciosExtras;
+	public void setFechaCompra(LocalDate fechaCompra) {
+		this.fechaCompra = fechaCompra;
 	}
 
 	public LocalDate getFechaCheckin() {
@@ -72,6 +66,14 @@ public class Reserva {
 
 	public void setFechaCheckout(LocalDate fechaCheckout) {
 		this.fechaCheckout = fechaCheckout;
+	}
+	
+	public double getMontoBase() {
+		return montoBase;
+	}
+	
+	public void setMontoBase(double montoBase) {
+		this.montoBase = montoBase;
 	}
 
 	public double getMontoFinal() {
@@ -97,13 +99,13 @@ public class Reserva {
 	public void setEstadoReserva(EstadoReserva estadoReserva) {
 		this.estadoReserva = estadoReserva;
 	}
-
-	public EstadoPago getEstadoPago() {
-		return estadoPago;
+	
+	public int getNumero() {
+		return numero;
 	}
-
-	public void setEstadoPago(EstadoPago estadoPago) {
-		this.estadoPago = estadoPago;
+	
+	public void liberarDisponibilidad() {
+		this.habitacion.setDisponibilidadXRango(fechaCheckin, fechaCheckout, DisponibilidadHabitacion.Disponible);
 	}
     
 }
