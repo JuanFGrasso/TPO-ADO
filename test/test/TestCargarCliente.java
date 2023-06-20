@@ -43,6 +43,28 @@ class TestCargarCliente {
 			System.out.println(String.format("%20s %20s %20s %20s %30s %30s", s1, s2, s3, s4, s5, s6));
 		}
 		
+		cargac.cambiarNombreApellidoCliente("33016244", "Pato", "Abondanzieri");
+		Cliente cliente1 = Sistema.getInstance().getClienteXDNI("33016244");
+		Assert.assertEquals("Pato", cliente1.getNombre());
+		Assert.assertEquals("Abondanzieri", cliente1.getApellido());
+		
+		cargac.cambiarContactoCliente("14276579", new Contacto("44443333", "diegomaradona@gmail.com", new WhatsApp(new AdaptadorWhatsApp())));
+		Cliente cliente2 = Sistema.getInstance().getClienteXDNI("14276579");
+		Assert.assertEquals("44443333", cliente2.getContacto().getTelefono());
+		
+		clientes = Sistema.getInstance().getClientes();
+		System.out.println();
+		System.out.print(String.format("%20s %20s %20s %20s %30s %30s %n", "Nombre", "Apellido", "DNI", "Telefono", "Email", "Metodo"));
+		for (Cliente lista: clientes) {
+			String s1 = lista.getNombre();
+			String s2 = lista.getApellido();
+			String s3 = lista.getDni();
+			String s4 = lista.getContacto().getTelefono();
+			String s5 = lista.getContacto().getEmail();
+			String s6 = lista.getContacto().getMetodo().getClass().toString();
+			System.out.println(String.format("%20s %20s %20s %20s %30s %30s", s1, s2, s3, s4, s5, s6));
+		}
+		
 	}
 
 }

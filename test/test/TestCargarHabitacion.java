@@ -1,11 +1,13 @@
 package test;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import controller.CargarHabitaciones;
+import modelo.DisponibilidadHabitacion;
 import modelo.Habitacion;
 import modelo.Sistema;
 import modelo.TipoHabitacion;
@@ -35,6 +37,14 @@ class TestCargarHabitacion {
 			String s4 = lista.getClass().toString();
 			System.out.println(String.format("%20s %20s %20s %20s", s1, s2, s3, s4));
 		}
+		
+		cargah.cambiarDisponibilidadHabitacion(500, DisponibilidadHabitacion.Reservada, LocalDate.parse("2023-06-20"));
+		Habitacion habitacion1 = Sistema.getInstance().getHabitacionXNumero(500);
+		Assert.assertEquals(DisponibilidadHabitacion.Reservada.toString(), habitacion1.getDisponibilidadXDia(LocalDate.parse("2023-06-20")));
+		
+		cargah.cambiarPrecioDiariodHabitacion(300, 40);
+		Habitacion habitacion2 = Sistema.getInstance().getHabitacionXNumero(300);
+		Assert.assertEquals(40, habitacion2.getPrecioDiario(), 0);
 		
 	}
 

@@ -10,11 +10,6 @@ public class Factura {
     	this.reserva = reserva;
     }
     
-    public double calcularMonto() {
-        // TODO implement here
-        return 0.0d;
-    }
-    
 	public Cliente getCliente() {
 		return cliente;
 	}

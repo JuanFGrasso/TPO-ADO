@@ -10,10 +10,6 @@ public class Facturador {
     	this.adapter = adapter;
     }
 
-    public void abonarReserva(Reserva reserva) {
-        // TODO implement here
-    }
-
     public Factura crearFactura(Cliente cliente, Reserva reserva) {
         // TODO implement here
         return null;

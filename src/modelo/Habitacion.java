@@ -16,6 +16,7 @@ public abstract class Habitacion {
     	this.capacidad = capacidad;
     	this.precioDiario = precioDiario;
     	this.disponibilidad = new String[31][12];
+    	this.serviciosExtras = new ArrayList<Extra>();
     	inicializarDisponibilidad();
     }
     
@@ -40,8 +41,8 @@ public abstract class Habitacion {
 	}
 	
 	public String getDisponibilidadXDia(LocalDate fecha) {
-		int dia = fecha.getDayOfMonth();
-		int mes = fecha.getMonthValue();
+		int dia = fecha.getDayOfMonth() - 1;
+		int mes = fecha.getMonthValue() - 1;
 		
 		return (disponibilidad[dia][mes]);
 	}
@@ -61,8 +62,8 @@ public abstract class Habitacion {
 	}
 
 	public void setDisponibilidadXDia(LocalDate fecha, DisponibilidadHabitacion disponibilidad) {
-		int dia = fecha.getDayOfMonth();
-		int mes = fecha.getMonthValue();
+		int dia = fecha.getDayOfMonth() - 1;
+		int mes = fecha.getMonthValue() - 1;
 		
 		this.disponibilidad[dia][mes] = disponibilidad.toString();
 	}
@@ -72,6 +73,7 @@ public abstract class Habitacion {
 		
 		while (!aux.isAfter(fin)) {
 			setDisponibilidadXDia(aux, disponibilidad);
+			aux = aux.plusDays(1);
 		}
 	}
 

@@ -18,7 +18,6 @@ public class Reserva {
     private double montoFinal;
     
     public Reserva(Habitacion habitacion, Cliente cliente,LocalDate fechaCompra, LocalDate fechaCheckin, LocalDate fechaCheckout){
-    	determinarPolitica();
     	habitacion.setDisponibilidadXRango(fechaCheckin, fechaCheckout, DisponibilidadHabitacion.Reservada);
         this.habitacion = habitacion;
         this.cliente = cliente;
@@ -28,6 +27,7 @@ public class Reserva {
         this.estadoReserva = new Reservado(this);
         this.numero = contador;
         contador++;
+        determinarPolitica();
     }
 
 	public Habitacion getHabitacion() {
@@ -111,9 +111,9 @@ public class Reserva {
 	}
 	
 	public void determinarPolitica() {
-		if (fechaCompra.compareTo(fechaCheckin) >= 60) {
+		if (cantidadDiasXRango(fechaCompra, fechaCheckin) >= 60) {
 			politicasPrecio = new AnticipacionSesentaDias();
-		} else if (fechaCompra.compareTo(fechaCheckin) >= 15) {
+		} else if (cantidadDiasXRango(fechaCompra, fechaCheckin) >= 15) {
 			politicasPrecio = new AnticipacionQuinceDias();
 		} else {
 			politicasPrecio = new AnticipacionDefault();
@@ -121,7 +121,7 @@ public class Reserva {
 	}
 	
 	public void calcularMontoBase() {
-		int dias = fechaCheckin.compareTo(fechaCheckin);
+		long dias = cantidadDiasXRango(fechaCheckin, fechaCheckout);
 		ArrayList<Extra> extras = habitacion.getServiciosExtra();
 		double montoextra = 0;
 		for (Extra lista: extras) {
@@ -132,6 +132,18 @@ public class Reserva {
 	
 	public void calcularMontoFinal() {
 		this.politicasPrecio.aplicarPoliticas(this);
+	}
+	
+	private int cantidadDiasXRango(LocalDate inic, LocalDate fin) {
+		LocalDate aux = inic;
+		int contador = 0;
+		
+		while (!aux.isAfter(fin)) {
+			contador++;
+			aux = aux.plusDays(1);
+		}
+		
+		return contador;
 	}
 	
 }
