@@ -6,8 +6,8 @@ public class AnticipacionQuinceDias extends IStrategyPoliticas {
 		this.descuento = 0.15;
 	}
 
-    public double aplicarPoliticas(Reserva reserva) {
-    	return 0;
+    public void aplicarPoliticas(Reserva reserva) {
+    	reserva.setMontoFinal(reserva.getMontoBase()*(1-descuento));
     }
 
 }

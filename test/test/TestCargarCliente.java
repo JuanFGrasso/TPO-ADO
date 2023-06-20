@@ -20,14 +20,14 @@ class TestCargarCliente {
 
 	@Test
 	void test() {
-		CargarClientes cargah = new CargarClientes();
+		CargarClientes cargac = new CargarClientes();
 		
-		boolean boolean1 = cargah.crearCliente("Lionel", "Messi", "33016244", new Contacto("44440000", "lionelmessi@gmail.com", new Email(new AdaptadorEmail())));
+		boolean boolean1 = cargac.crearCliente("Lionel", "Messi", "33016244", new Contacto("44440000", "lionelmessi@gmail.com", new Email(new AdaptadorEmail())));
 		Assert.assertEquals(true, boolean1);
-		boolean boolean2 = cargah.crearCliente("Diego", "Maradona", "33016244", new Contacto("44441111", "diegomaradona@gmail.com", new SMS(new AdaptadorSMS())));
+		boolean boolean2 = cargac.crearCliente("Diego", "Maradona", "33016244", new Contacto("44441111", "diegomaradona@gmail.com", new SMS(new AdaptadorSMS())));
 		Assert.assertEquals(false, boolean2);
-		cargah.crearCliente("Diego", "Maradona", "14276579", new Contacto("44441111", "diegomaradona@gmail.com", new SMS(new AdaptadorSMS())));
-		cargah.crearCliente("Roman", "Riquelme", "26752869", new Contacto("44442222", "romanriquelme@gmail.com", new WhatsApp(new AdaptadorWhatsApp())));
+		cargac.crearCliente("Diego", "Maradona", "14276579", new Contacto("44441111", "diegomaradona@gmail.com", new SMS(new AdaptadorSMS())));
+		cargac.crearCliente("Roman", "Riquelme", "26752869", new Contacto("44442222", "romanriquelme@gmail.com", new WhatsApp(new AdaptadorWhatsApp())));
 		
 		ArrayList<Cliente> clientes = Sistema.getInstance().getClientes();
 		

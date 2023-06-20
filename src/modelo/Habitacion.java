@@ -1,7 +1,7 @@
 package modelo;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.ArrayList;
 
 public abstract class Habitacion {
 	
@@ -9,7 +9,7 @@ public abstract class Habitacion {
 	private String[][] disponibilidad;
 	private int capacidad;
 	private double precioDiario;
-	private List<Extra> serviciosExtras;
+	private ArrayList<Extra> serviciosExtras;
     
     public Habitacion(int numero, int capacidad, double precioDiario) {
     	this.numero = numero;
@@ -93,6 +93,10 @@ public abstract class Habitacion {
 	
 	public void agregarServicio(Extra extra) {
 		serviciosExtras.add(extra);
+	}
+	
+	public ArrayList<Extra> getServiciosExtra() {
+		return serviciosExtras;
 	}
 
 }

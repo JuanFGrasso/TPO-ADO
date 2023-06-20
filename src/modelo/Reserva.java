@@ -1,6 +1,7 @@
 package modelo;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Reserva {
 	
@@ -17,8 +18,9 @@ public class Reserva {
     private double montoFinal;
     
     public Reserva(Habitacion habitacion, Cliente cliente,LocalDate fechaCompra, LocalDate fechaCheckin, LocalDate fechaCheckout){
+    	determinarPolitica();
+    	habitacion.setDisponibilidadXRango(fechaCheckin, fechaCheckout, DisponibilidadHabitacion.Reservada);
         this.habitacion = habitacion;
-        habitacion.setDisponibilidadXRango(fechaCheckin, fechaCheckout, DisponibilidadHabitacion.Reservada);
         this.cliente = cliente;
         this.fechaCompra = fechaCompra;
         this.fechaCheckin = fechaCheckin;
@@ -107,5 +109,29 @@ public class Reserva {
 	public void liberarDisponibilidad() {
 		this.habitacion.setDisponibilidadXRango(fechaCheckin, fechaCheckout, DisponibilidadHabitacion.Disponible);
 	}
-    
+	
+	public void determinarPolitica() {
+		if (fechaCompra.compareTo(fechaCheckin) >= 60) {
+			politicasPrecio = new AnticipacionSesentaDias();
+		} else if (fechaCompra.compareTo(fechaCheckin) >= 15) {
+			politicasPrecio = new AnticipacionQuinceDias();
+		} else {
+			politicasPrecio = new AnticipacionDefault();
+		}
+	}
+	
+	public void calcularMontoBase() {
+		int dias = fechaCheckin.compareTo(fechaCheckin);
+		ArrayList<Extra> extras = habitacion.getServiciosExtra();
+		double montoextra = 0;
+		for (Extra lista: extras) {
+			montoextra = montoextra + lista.getPrecio();
+		}
+		this.montoBase = dias * habitacion.getPrecioDiario() + montoextra;
+	}
+	
+	public void calcularMontoFinal() {
+		this.politicasPrecio.aplicarPoliticas(this);
+	}
+	
 }
