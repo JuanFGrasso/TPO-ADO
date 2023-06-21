@@ -14,9 +14,9 @@ public abstract class Timer {
 		this.limite = limite;
 	}
 	
-	public void validarTiempo(Reserva reserva, LocalDate fechaHoy) {
+	public static void validarTiempo(Reserva reserva) {
 		if (reserva.getEstadoReserva() instanceof Reservado) {
-			if (reserva.getFechaCompra().isBefore(fechaHoy)) {
+			if (reserva.getFechaCompra().isBefore(LocalDate.now())) {
 				reserva.getEstadoReserva().cancelar();
 			}
 		}

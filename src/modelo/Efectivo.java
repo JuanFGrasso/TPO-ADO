@@ -1,12 +1,13 @@
 package modelo;
 
-public class Efectivo extends MedioDePago {
+public class Efectivo implements MedioDePago {
 
     public Efectivo() {
     }
 
     public void abonarReserva(Reserva reserva) {
-        // TODO implement here
+    	String idpago = String.valueOf(reserva.getNumero()) + String.valueOf(reserva.getCliente().getDni());
+    	System.out.println("Se ha realizado el pago en efectivo con el id de pago " + idpago);
     }
 
 }

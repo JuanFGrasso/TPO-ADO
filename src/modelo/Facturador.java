@@ -3,16 +3,20 @@ package modelo;
 public class Facturador {
 	
 	private MedioDePago medioDePago;
-	private AdaptadorMercadoPago adapter;
 
-    public Facturador(MedioDePago medioDePago, AdaptadorMercadoPago adapter) {
+    public Facturador(MedioDePago medioDePago) {
     	this.medioDePago = medioDePago;
-    	this.adapter = adapter;
     }
 
-    public Factura crearFactura(Cliente cliente, Reserva reserva) {
-        // TODO implement here
-        return null;
+    public void crearFactura(Reserva reserva) {
+        Factura factura = new Factura(reserva);
+        Sistema.getInstance().agregarFacturas(factura);
+    }
+    
+    public void abonarReserva(Reserva reserva) {
+    	this.medioDePago.abonarReserva(reserva);
+    	reserva.getEstadoReserva().concretar();
+    	crearFactura(reserva);
     }
 
 	public MedioDePago getMedioDePago() {
@@ -21,14 +25,6 @@ public class Facturador {
 
 	public void setMedioDePago(MedioDePago medioDePago) {
 		this.medioDePago = medioDePago;
-	}
-
-	public AdaptadorMercadoPago getAdapter() {
-		return adapter;
-	}
-
-	public void setAdapter(AdaptadorMercadoPago adapter) {
-		this.adapter = adapter;
 	}
 
 }

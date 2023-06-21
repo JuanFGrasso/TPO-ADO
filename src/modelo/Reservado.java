@@ -4,6 +4,7 @@ public class Reservado extends EstadoReserva {
 
     public Reservado(Reserva reserva) {
     	super(reserva);
+    	reserva.getCliente().getContacto().getMetodo().enviarNotificacion(reserva, "Registrado");
     }
 
     public void cancelar() {

@@ -1,9 +1,9 @@
 package modelo;
 
-public class AnticipacionSesentaDias extends IStrategyPoliticas {
+public class PoliticaDefault extends IStrategyPoliticas {
 	
-	public AnticipacionSesentaDias() {
-		this.descuento = 0.20;
+	public PoliticaDefault() {
+		this.descuento = 0;
 	}
 
     public void aplicarPoliticas(Reserva reserva) {

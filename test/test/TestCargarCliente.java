@@ -6,9 +6,8 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import controller.CargarClientes;
-import modelo.AdaptadorEmail;
-import modelo.AdaptadorSMS;
-import modelo.AdaptadorWhatsApp;
+import modelo.AdaptadorMessageBird;
+import modelo.AdaptadorTwillio;
 import modelo.Cliente;
 import modelo.Contacto;
 import modelo.Email;
@@ -22,12 +21,12 @@ class TestCargarCliente {
 	void test() {
 		CargarClientes cargac = new CargarClientes();
 		
-		boolean boolean1 = cargac.crearCliente("Lionel", "Messi", "33016244", new Contacto("44440000", "lionelmessi@gmail.com", new Email(new AdaptadorEmail())));
+		boolean boolean1 = cargac.crearCliente("Lionel", "Messi", "33016244", new Contacto("44440000", "lionelmessi@gmail.com", new Email(new AdaptadorMessageBird())));
 		Assert.assertEquals(true, boolean1);
-		boolean boolean2 = cargac.crearCliente("Diego", "Maradona", "33016244", new Contacto("44441111", "diegomaradona@gmail.com", new SMS(new AdaptadorSMS())));
+		boolean boolean2 = cargac.crearCliente("Diego", "Maradona", "33016244", new Contacto("44441111", "diegomaradona@gmail.com", new SMS(new AdaptadorTwillio())));
 		Assert.assertEquals(false, boolean2);
-		cargac.crearCliente("Diego", "Maradona", "14276579", new Contacto("44441111", "diegomaradona@gmail.com", new SMS(new AdaptadorSMS())));
-		cargac.crearCliente("Roman", "Riquelme", "26752869", new Contacto("44442222", "romanriquelme@gmail.com", new WhatsApp(new AdaptadorWhatsApp())));
+		cargac.crearCliente("Diego", "Maradona", "14276579", new Contacto("44441111", "diegomaradona@gmail.com", new SMS(new AdaptadorTwillio())));
+		cargac.crearCliente("Roman", "Riquelme", "26752869", new Contacto("44442222", "romanriquelme@gmail.com", new WhatsApp(new AdaptadorTwillio())));
 		
 		ArrayList<Cliente> clientes = Sistema.getInstance().getClientes();
 		
@@ -48,7 +47,7 @@ class TestCargarCliente {
 		Assert.assertEquals("Pato", cliente1.getNombre());
 		Assert.assertEquals("Abondanzieri", cliente1.getApellido());
 		
-		cargac.cambiarContactoCliente("14276579", new Contacto("44443333", "diegomaradona@gmail.com", new WhatsApp(new AdaptadorWhatsApp())));
+		cargac.cambiarContactoCliente("14276579", new Contacto("44443333", "diegomaradona@gmail.com", new WhatsApp(new AdaptadorTwillio())));
 		Cliente cliente2 = Sistema.getInstance().getClienteXDNI("14276579");
 		Assert.assertEquals("44443333", cliente2.getContacto().getTelefono());
 		

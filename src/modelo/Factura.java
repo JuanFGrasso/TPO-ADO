@@ -1,22 +1,16 @@
 package modelo;
 
 public class Factura {
-
-    private Cliente cliente;
+	
+	private int numero;
+	private static int contador = 0;
     private Reserva reserva;
 
-    public Factura(Cliente cliente, Reserva reserva) {
-    	this.cliente = cliente;
+    public Factura(Reserva reserva) {
     	this.reserva = reserva;
+    	this.numero = contador;
+    	contador++;
     }
-    
-	public Cliente getCliente() {
-		return cliente;
-	}
-	
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
 	
 	public Reserva getReserva() {
 		return reserva;
@@ -24,6 +18,14 @@ public class Factura {
 	
 	public void setReserva(Reserva reserva) {
 		this.reserva = reserva;
+	}
+	
+	public int getNumero() {
+		return numero;
+	}
+	
+	public void setNumero(int numero) {
+		this.numero = numero;
 	}
     
 

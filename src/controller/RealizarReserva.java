@@ -3,9 +3,12 @@ package controller;
 import java.time.LocalDate;
 
 import modelo.Cliente;
+import modelo.Facturador;
 import modelo.Habitacion;
+import modelo.MedioDePago;
 import modelo.Reserva;
 import modelo.Sistema;
+import modelo.Timer;
 
 public class RealizarReserva {
 	
@@ -27,12 +30,17 @@ public class RealizarReserva {
 			return flag;
 	}
 	
-	public boolean confirmarReserva(int numero) {
+	public boolean confirmarReserva(int numero, MedioDePago medio) {
+		CalcularMontos calcularm = new CalcularMontos();
+		calcularm.calcularMontoBase(numero);
+		calcularm.calcularMontoFinal(numero);
+		
 		Reserva reserva = sistema.getReservaXNumero(numero);
 		boolean flag;
 		
 		if (reserva != null) {
-			reserva.getEstadoReserva().concretar();
+			Facturador facturador = new Facturador(medio);
+			facturador.abonarReserva(reserva);
 			flag = true;
 		} else {
 			flag = false;
@@ -47,6 +55,20 @@ public class RealizarReserva {
 		
 		if (reserva != null) {
 			reserva.getEstadoReserva().cancelar();
+			flag = true;
+		} else {
+			flag = false;
+		}
+		
+		return flag;
+	}
+	
+	public boolean validarTiempo(int numero) {
+		Reserva reserva = sistema.getReservaXNumero(numero);
+		boolean flag;
+		
+		if (reserva != null) {
+			Timer.validarTiempo(reserva);
 			flag = true;
 		} else {
 			flag = false;

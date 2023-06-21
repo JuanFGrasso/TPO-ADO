@@ -1,22 +1,12 @@
 package modelo;
 
-public class MercadoPago {
+public interface MercadoPago {
 	
-	private AdaptadorMercadoPago adapter;
+	public void realizarPagoTC(int numero, int codigo, String vencimiento, String idpago, double monto);
+	
+	public void realizarPagoTD(int numero, int codigo, String vencimiento, String idpago, double monto);
+	
+	public void realizarPagoTransferencia(String CBU, String idpago, double monto);
 
-    public MercadoPago() {
-    }
-
-    public void abonarFactura(Factura f) {
-        // TODO implement here
-    }
-
-	public AdaptadorMercadoPago getAdapter() {
-		return adapter;
-	}
-
-	public void setAdapter(AdaptadorMercadoPago adapter) {
-		this.adapter = adapter;
-	}
 
 }

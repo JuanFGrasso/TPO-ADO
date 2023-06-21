@@ -112,11 +112,11 @@ public class Reserva {
 	
 	public void determinarPolitica() {
 		if (cantidadDiasXRango(fechaCompra, fechaCheckin) >= 60) {
-			politicasPrecio = new AnticipacionSesentaDias();
+			politicasPrecio = new PoliticaSesentaDias();
 		} else if (cantidadDiasXRango(fechaCompra, fechaCheckin) >= 15) {
-			politicasPrecio = new AnticipacionQuinceDias();
+			politicasPrecio = new PoliticaQuinceDias();
 		} else {
-			politicasPrecio = new AnticipacionDefault();
+			politicasPrecio = new PoliticaDefault();
 		}
 	}
 	

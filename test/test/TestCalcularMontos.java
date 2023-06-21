@@ -9,7 +9,7 @@ import controller.CalcularMontos;
 import controller.CargarClientes;
 import controller.CargarHabitaciones;
 import controller.RealizarReserva;
-import modelo.AdaptadorEmail;
+import modelo.AdaptadorMessageBird;
 import modelo.Contacto;
 import modelo.Email;
 import modelo.Internet;
@@ -27,7 +27,7 @@ class TestCalcularMontos {
 		RealizarReserva realizar = new RealizarReserva();
 		CalcularMontos calcularm = new CalcularMontos();
 		
-		cargac.crearCliente("Lionel", "Messi", "33016244", new Contacto("44440000", "lionelmessi@gmail.com", new Email(new AdaptadorEmail())));
+		cargac.crearCliente("Lionel", "Messi", "33016244", new Contacto("44440000", "lionelmessi@gmail.com", new Email(new AdaptadorMessageBird())));
 		cargah.crearHabitacion(200, 2, 20, TipoHabitacion.SIMPLE);
 		cargah.agregarExtraHabitacion(200, new Internet(50));
 		cargah.agregarExtraHabitacion(200, new MiniBar(75));

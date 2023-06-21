@@ -6,15 +6,17 @@ public class Sistema {
 	
 	private static Sistema instancia;
 	
-	ArrayList<Cliente> clientes;
-	ArrayList<Habitacion> habitaciones;
-	ArrayList<Reserva> reservas;
+	private ArrayList<Cliente> clientes;
+	private ArrayList<Habitacion> habitaciones;
+	private ArrayList<Reserva> reservas;
+	private ArrayList<Factura> facturas;
 	
 	
 	public Sistema() {
 		clientes = new ArrayList<Cliente>();
 		habitaciones = new ArrayList<Habitacion>();
 		reservas = new ArrayList<Reserva>();
+		facturas = new ArrayList<Factura>();
 	}
 	
 	public static Sistema getInstance() {
@@ -36,6 +38,10 @@ public class Sistema {
 		return reservas;
 	}
 	
+	public ArrayList<Factura> getFacturas(){
+		return facturas;
+	}
+	
 	public void agregarClientes(Cliente cliente) {
 		clientes.add(cliente);
 	}
@@ -46,6 +52,10 @@ public class Sistema {
 	
 	public void agregarReservas(Reserva reserva) {
 		reservas.add(reserva);
+	}
+	
+	public void agregarFacturas(Factura factura) {
+		facturas.add(factura);
 	}
 	
 	public boolean validarClienteExistente(Cliente cliente) {
@@ -86,6 +96,15 @@ public class Sistema {
 	
 	public Reserva getReservaXNumero(int numero) {
 		for (Reserva lista: reservas) {
+			if (lista.getNumero() == numero) {
+				return lista;
+			}
+		}
+		return null;
+	}
+	
+	public Factura getFacturaXNumero(int numero) {
+		for (Factura lista: facturas) {
 			if (lista.getNumero() == numero) {
 				return lista;
 			}

@@ -9,14 +9,16 @@ import org.junit.jupiter.api.Test;
 import controller.CargarClientes;
 import controller.CargarHabitaciones;
 import controller.RealizarReserva;
-import modelo.AdaptadorEmail;
-import modelo.AdaptadorSMS;
+import modelo.AdaptadorMercadoPago;
+import modelo.AdaptadorMessageBird;
+import modelo.AdaptadorTwillio;
 import modelo.Contacto;
 import modelo.DisponibilidadHabitacion;
 import modelo.Email;
 import modelo.Reserva;
 import modelo.SMS;
 import modelo.Sistema;
+import modelo.TarjetaDeCrédito;
 import modelo.TipoHabitacion;
 
 class TestRealizarReserva {
@@ -27,8 +29,8 @@ class TestRealizarReserva {
 		CargarHabitaciones cargah = new CargarHabitaciones();
 		RealizarReserva realizar = new RealizarReserva();
 		
-		cargac.crearCliente("Lionel", "Messi", "33016244", new Contacto("44440000", "lionelmessi@gmail.com", new Email(new AdaptadorEmail())));
-		cargac.crearCliente("Diego", "Maradona", "14276579", new Contacto("44441111", "diegomaradona@gmail.com", new SMS(new AdaptadorSMS())));
+		cargac.crearCliente("Lionel", "Messi", "33016244", new Contacto("44440000", "lionelmessi@gmail.com", new Email(new AdaptadorMessageBird())));
+		cargac.crearCliente("Diego", "Maradona", "14276579", new Contacto("44441111", "diegomaradona@gmail.com", new SMS(new AdaptadorTwillio())));
 		cargah.crearHabitacion(200, 2, 20, TipoHabitacion.SIMPLE);
 		
 		boolean boolean1 = realizar.crearReserva(200, "33016244", LocalDate.parse("2023-06-20"), LocalDate.parse("2023-06-30"), LocalDate.parse("2023-07-10"));
@@ -59,12 +61,13 @@ class TestRealizarReserva {
 		String string1 = Sistema.getInstance().getHabitacionXNumero(200).getDisponibilidadXDia(LocalDate.parse("2023-07-10"));
 		Assert.assertEquals(DisponibilidadHabitacion.Reservada.toString(), string1);
 		
+		System.out.println();
+		realizar.confirmarReserva(0, new TarjetaDeCrédito(40405650,197,"06/23", new AdaptadorMercadoPago()));
 		Reserva reserva1 = Sistema.getInstance().getReservaXNumero(0);
-		Reserva reserva2 = Sistema.getInstance().getReservaXNumero(1);
-		
-		reserva1.getEstadoReserva().concretar();
 		Assert.assertEquals("class modelo.Pagado", reserva1.getEstadoReserva().getClass().toString());
-		reserva2.getEstadoReserva().cancelar();
+		
+		realizar.cancelarReserva(1);
+		Reserva reserva2 = Sistema.getInstance().getReservaXNumero(1);
 		Assert.assertEquals("class modelo.Cancelada", reserva2.getEstadoReserva().getClass().toString());
 		
 		/*

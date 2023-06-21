@@ -2,21 +2,29 @@ package modelo;
 
 public class WhatsApp implements IStrategyMetodoContacto{
 	
-	private AdaptadorWhatsApp adapter;
+	private AdaptadorTwillio adapter;
 
-    public WhatsApp(AdaptadorWhatsApp adapter) {
+    public WhatsApp(AdaptadorTwillio adapter) {
     	this.adapter = adapter;
     }
 
-    public void enviarFactura(Factura factura, Cliente cliente) {
-        // TODO implement here
+    public void enviarFactura(Factura factura) {
+    	String mensaje = "Factura.PDF";
+    	String numero = factura.getReserva().getCliente().getContacto().getTelefono();
+    	adapter.enviarWhatsApp(mensaje, numero);
+    }
+    
+    public void enviarNotificacion(Reserva reserva, String estado) {
+    	String mensaje = "Su reserva se encuentra en el estado " + estado;
+    	String numero = reserva.getCliente().getContacto().getTelefono();
+    	adapter.enviarWhatsApp(mensaje, numero);
     }
 
-	public AdaptadorWhatsApp getAdapter() {
+	public AdaptadorTwillio getAdapter() {
 		return adapter;
 	}
 
-	public void setAdapter(AdaptadorWhatsApp adapter) {
+	public void setAdapter(AdaptadorTwillio adapter) {
 		this.adapter = adapter;
 	}  
 
