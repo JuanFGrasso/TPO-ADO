@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import controller.CargarClientes;
 import controller.CargarHabitaciones;
+import controller.EnviarFactura;
 import controller.RealizarReserva;
 import modelo.AdaptadorMercadoPago;
 import modelo.AdaptadorMessageBird;
@@ -28,6 +29,7 @@ class TestRealizarReserva {
 		CargarClientes cargac = new CargarClientes();
 		CargarHabitaciones cargah = new CargarHabitaciones();
 		RealizarReserva realizar = new RealizarReserva();
+		EnviarFactura enviarf = new EnviarFactura();
 		
 		cargac.crearCliente("Lionel", "Messi", "33016244", new Contacto("44440000", "lionelmessi@gmail.com", new Email(new AdaptadorMessageBird())));
 		cargac.crearCliente("Diego", "Maradona", "14276579", new Contacto("44441111", "diegomaradona@gmail.com", new SMS(new AdaptadorTwillio())));
@@ -65,6 +67,9 @@ class TestRealizarReserva {
 		realizar.confirmarReserva(0, new TarjetaDeCrédito(40405650,197,"06/23", new AdaptadorMercadoPago()));
 		Reserva reserva1 = Sistema.getInstance().getReservaXNumero(0);
 		Assert.assertEquals("class modelo.Pagado", reserva1.getEstadoReserva().getClass().toString());
+		
+		boolean boolean6 = enviarf.enviarFactura(0);
+		Assert.assertEquals(true, boolean6);
 		
 		realizar.cancelarReserva(1);
 		Reserva reserva2 = Sistema.getInstance().getReservaXNumero(1);

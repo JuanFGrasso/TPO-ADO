@@ -2,8 +2,8 @@ package modelo;
 
 public class Transferencia implements MedioDePago {
 	
-	String CBU;
-	AdaptadorMercadoPago adapter;
+	private String CBU;
+	private AdaptadorMercadoPago adapter;
 
     public Transferencia(String CBU, AdaptadorMercadoPago adapter) {
     	this.CBU = CBU;

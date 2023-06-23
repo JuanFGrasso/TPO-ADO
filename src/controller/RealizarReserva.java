@@ -1,6 +1,7 @@
 package controller;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import modelo.Cliente;
 import modelo.Facturador;
@@ -75,6 +76,22 @@ public class RealizarReserva {
 		}
 		
 		return flag;
+	}
+	
+	public void mostrarReservas() {
+		ArrayList<Reserva> reservas = sistema.getReservas();
+		System.out.println();
+		System.out.print(String.format("%20s %20s %20s %20s %20s %40s %40s %n", "Numero", "DNI", "Habitacion", "Checkin", "Checkout", "Politica", "Estado"));
+		for (Reserva lista: reservas) {
+			String s1 = String.valueOf(lista.getNumero());
+			String s2 = String.valueOf(lista.getCliente().getDni());
+			String s3 = String.valueOf(lista.getHabitacion().getNumero());
+			String s4 = lista.getFechaCheckin().toString();
+			String s5 = lista.getFechaCheckout().toString();
+			String s6 = lista.getPoliticasPrecio().getClass().toString();
+			String s7 = lista.getEstadoReserva().getClass().toString();
+			System.out.println(String.format("%20s %20s %20s %20s %20s %40s %40s", s1, s2, s3, s4, s5, s6, s7));
+		}
 	}
 
 }
