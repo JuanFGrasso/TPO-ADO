@@ -12,7 +12,7 @@ public class Reserva {
     private LocalDate fechaCompra;
     private LocalDate fechaCheckin;
     private LocalDate fechaCheckout;
-    private IStrategyPoliticas politicasPrecio;
+    private StrategyPoliticas politicasPrecio;
     private EstadoReserva estadoReserva;
     private double montoBase;
     private double montoFinal;
@@ -86,11 +86,11 @@ public class Reserva {
 		this.montoFinal = montoFinal;
 	}
 
-	public IStrategyPoliticas getPoliticasPrecio() {
+	public StrategyPoliticas getPoliticasPrecio() {
 		return politicasPrecio;
 	}
 
-	public void setPoliticasPrecio(IStrategyPoliticas politicasPrecio) {
+	public void setPoliticasPrecio(StrategyPoliticas politicasPrecio) {
 		this.politicasPrecio = politicasPrecio;
 	}
 

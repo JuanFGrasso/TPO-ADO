@@ -1,6 +1,6 @@
 package modelo;
 
-public class PoliticaSesentaDias extends IStrategyPoliticas {
+public class PoliticaSesentaDias extends StrategyPoliticas {
 	
 	public PoliticaSesentaDias() {
 		this.descuento = 0.20;

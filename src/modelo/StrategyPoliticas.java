@@ -1,6 +1,6 @@
 package modelo;
 
-public abstract class IStrategyPoliticas {
+public abstract class StrategyPoliticas {
 	
 	protected double descuento;
 	

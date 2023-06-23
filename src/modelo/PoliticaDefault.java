@@ -1,6 +1,6 @@
 package modelo;
 
-public class PoliticaDefault extends IStrategyPoliticas {
+public class PoliticaDefault extends StrategyPoliticas {
 	
 	public PoliticaDefault() {
 		this.descuento = 0;
